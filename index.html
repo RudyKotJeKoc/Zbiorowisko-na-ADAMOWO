@@ -23,83 +23,160 @@
     <link rel="preload" href="public/images/studio/studio-1.png" as="image">
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-900 text-gray-300">
-    <!-- Baner instalacji PWA z animacją -->
-    <div id="pwa-install-banner" class="fixed top-0 left-0 w-full flex justify-center z-50 hidden">
-        <div class="pwa-banner-content relative flex items-center px-6 py-4 mt-4 rounded-lg shadow-lg">
-            <div class="wave-light absolute inset-0 pointer-events-none"></div>
-            <span class="relative z-10 text-green-300 font-bold text-lg mr-6">Zainstaluj Radio Adamowo na swoim telefonie!</span>
-            <button id="pwa-install-btn" class="relative z-10 px-5 py-2 bg-green-500 text-black font-bold rounded-lg shadow hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-green-400 transition">Zainstaluj</button>
+<body class="app-body">
+    <div id="pwa-install-banner" class="install-banner hidden" role="dialog" aria-live="polite" aria-labelledby="install-banner-title">
+        <div class="install-banner__content">
+            <div class="install-banner__glow"></div>
+            <p id="install-banner-title" class="install-banner__text">Zainstaluj Radio Adamowo na swoim telefonie!</p>
+            <div class="install-banner__actions">
+                <button id="pwa-install-btn" class="button button--primary">Zainstaluj</button>
+                <button id="pwa-dismiss-btn" class="button button--ghost" aria-label="Zamknij baner">×</button>
+            </div>
         </div>
     </div>
-    <!-- Enhanced Studio Background Header -->
-    <header class="text-center py-8 studio-background-enhanced relative overflow-hidden">
-        <div class="studio-overlay absolute inset-0 bg-black bg-opacity-60"></div>
-        <div class="relative z-10">
-            <h1 class="text-4xl md:text-5xl font-bold special-elite text-amber-500 mb-2">Radio Adamowo</h1>
-            <p class="text-xl md:text-2xl mt-2 text-gray-200">Słuchaj szumu prawdy w eterze manipulacji.</p>
-            <div class="mt-4 flex justify-center items-center space-x-4">
-                <div class="on-air-indicator bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold animate-pulse">
-                    🔴 ON AIR
+
+    <header class="hero" id="top">
+        <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="hero__content">
+            <div class="hero__meta">
+                <span class="hero__badge" data-i18n="header.onAir">🔴 ON AIR</span>
+                <span class="hero__location" data-i18n="header.studio">Studio Radia Adamowo</span>
+            </div>
+            <h1 class="hero__title special-elite" data-i18n="header.title">Radio Adamowo</h1>
+            <p class="hero__subtitle" data-i18n="header.subtitle">Słuchaj szumu prawdy w eterze manipulacji.</p>
+            <div class="hero__stats" role="list">
+                <div class="hero__stat" role="listitem">
+                    <span class="hero__stat-value" id="listeners-count">0</span>
+                    <span class="hero__stat-label" data-i18n="header.listeners">słuchaczy online</span>
                 </div>
-                <div class="text-gray-300 text-sm">Studio Radia Adamowo</div>
+                <div class="hero__stat" role="listitem">
+                    <span class="hero__stat-value">24/7</span>
+                    <span class="hero__stat-label">Live stream</span>
+                </div>
             </div>
         </div>
     </header>
 
-    <main class="container mx-auto px-4">
-    
-
-        <!-- Autoplay Overlay -->
-        <div id="autoplay-overlay" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-            <div class="text-center p-6 bg-gray-900 rounded-lg shadow-lg border border-amber-500">
-                <h2 class="text-3xl special-elite text-amber-500 mb-4">Radio Adamowo</h2>
-                <p class="text-gray-300 mb-6">Ze względu na ograniczenia przeglądarek, musisz rozpocząć transmisję ręcznie.</p>
-                <button id="start-btn" class="px-6 py-3 bg-amber-500 text-black rounded-lg hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500" aria-label="Uruchom transmisję">Uruchom Transmisję</button>
+    <main class="layout">
+        <div id="autoplay-overlay" class="autoplay-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="autoplay-title">
+            <div class="autoplay-overlay__content">
+                <h2 id="autoplay-title" class="autoplay-overlay__title special-elite" data-i18n="autoplay.title">Radio Adamowo</h2>
+                <p class="autoplay-overlay__lead" data-i18n="autoplay.description">Ze względu na ograniczenia przeglądarek, musisz rozpocząć transmisję ręcznie.</p>
+                <p class="autoplay-overlay__question" data-i18n="autoplay.choiceQuestion">Jak chcesz rozpocząć swoją edukację?</p>
+                <div class="autoplay-overlay__moods">
+                    <button class="mood-btn" type="button" data-mood="easy" data-i18n="autoplay.easy">Łagodnie (dla wrażliwych)</button>
+                    <button class="mood-btn mood-btn--primary" type="button" data-mood="normal" data-i18n="autoplay.normal">Normalnie ⭐ POLECANE</button>
+                    <button class="mood-btn" type="button" data-mood="hard" data-i18n="autoplay.hard">Intensywnie (dla odpornych)</button>
+                </div>
+                <p class="autoplay-overlay__hint" data-i18n="autoplay.hint">💡 To fałszywy wybór - wszystkie opcje robią to samo!</p>
             </div>
         </div>
 
-        <!-- Enhanced Navigation -->
-        <nav class="sticky top-0 bg-gray-900 z-10 border-b border-gray-800">
-            <div class="container mx-auto px-4 py-4">
-                <button id="menu-toggle" class="md:hidden text-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500" aria-label="Przełącz menu mobilne">☰</button>
-                <ul id="mobile-menu" class="hidden md:flex md:space-x-6 justify-center">
-                    <li><a href="#violence-loop" class="nav-link nav-link-mobile text-gray-300 hover:text-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500">Pętla Przemocy</a></li>
-                    <li><a href="#analytical-broadcasts" class="nav-link nav-link-mobile text-gray-300 hover:text-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500">Audycje Analityczne</a></li>
-                    <li><a href="#video-section" class="nav-link nav-link-mobile text-gray-300 hover:text-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500">Materiał Wideo</a></li>
-                    <li><a href="#guide" class="nav-link nav-link-mobile text-gray-300 hover:text-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500">Poradnik</a></li>
-                    <li><a href="#narcissus-mythology" class="nav-link nav-link-mobile text-gray-300 hover:text-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500">Mitologia Narcyza</a></li>
-                    <li><a href="#archive" class="nav-link nav-link-mobile text-gray-300 hover:text-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500">Archiwum</a></li>
+        <nav class="main-nav" aria-label="Główna nawigacja">
+            <div class="main-nav__inner">
+                <a href="#top" class="main-nav__brand special-elite">Radio Adamowo</a>
+                <button id="menu-toggle" class="main-nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Przełącz menu mobilne">☰</button>
+                <ul id="mobile-menu" class="main-nav__links">
+                    <li><a href="#radio-section" data-i18n="navigation.player">📻 Odtwarzacz</a></li>
+                    <li><a href="#analytical-broadcasts" data-i18n="navigation.laboratory">🧪 Laboratorium</a></li>
+                    <li><a href="#video-section" data-i18n="navigation.museum">🎞️ Materiał Wideo</a></li>
+                    <li><a href="#guide" data-i18n="navigation.resistance">🛡️ Poradnik</a></li>
+                    <li><a href="#narcissus-mythology" data-i18n="navigation.games">🎮 Mitologia</a></li>
+                    <li><a href="#archive" data-i18n="navigation.achievements">🏛️ Archiwum</a></li>
                 </ul>
+                <div class="language-switcher" role="group" aria-label="Wybór języka">
+                    <button class="language-switcher__btn" type="button" data-lang="pl">PL</button>
+                    <button class="language-switcher__btn" type="button" data-lang="en">EN</button>
+                    <button class="language-switcher__btn" type="button" data-lang="nl">NL</button>
+                </div>
             </div>
         </nav>
 
         <!-- Introduction -->
-        <section class="my-12 text-center">
+        <section class="section section--intro text-center my-12">
             <div class="infinity-separator"></div>
-            <h2 class="text-3xl special-elite text-amber-500 mb-4">Osiem lat. To nie fatum, to wzorzec.</h2>
-            <p class="text-gray-300 max-w-2xl mx-auto">Osiem lat – tyle trwa cykl narcystycznej przemocy. To nie przypadek czy klątwa. To podręcznikowy wzorzec manipulacji, który powtarza się w nieskończoność. W Adamowie czas nie leczy ran. On ujawnia schematy. Zapraszamy do ich analizy.</p>
+            <h2 class="section__title special-elite" data-i18n="intro.title">Osiem lat. To nie fatum, to wzorzec.</h2>
+            <p class="section__lead" data-i18n="intro.description">Osiem lat – tyle trwa cykl narcystycznej przemocy. To nie przypadek czy klątwa. To podręcznikowy wzorzec manipulacji, który powtarza się w nieskończoność. W Adamowie czas nie leczy ran. On ujawnia schematy. Zapraszamy do ich analizy.</p>
         </section>
 
         <!-- Enhanced Radio Player -->
-        <section class="my-12">
-            <h2 class="text-3xl special-elite text-center text-amber-500 mb-6">Radio Adamowo: Muzyka z Eteru</h2>
-            <div class="flex justify-center space-x-4 mb-6">
-                <button class="playlist-btn tab-button px-4 py-2 bg-gray-700 text-gray-200 rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500" data-playlist="ambient" aria-label="Odtwórz playlistę ambient">Ambient</button>
-                <button class="playlist-btn tab-button px-4 py-2 bg-gray-700 text-gray-200 rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500" data-playlist="disco" aria-label="Odtwórz playlistę disco">Disco</button>
-                <button class="playlist-btn tab-button px-4 py-2 bg-gray-700 text-gray-200 rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500" data-playlist="hiphop" aria-label="Odtwórz playlistę hip-hop">Hip-Hop</button>
-                <button class="playlist-btn tab-button px-4 py-2 bg-gray-700 text-gray-200 rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500" data-playlist="full" aria-label="Odtwórz pełną playlistę">Pełna Lista</button>
+        <section id="radio-section" class="section section--radio my-12">
+            <div class="section__header">
+                <h2 class="section__title special-elite" data-i18n="radio.title">📻 Radio Adamowo: Muzyka z Eteru</h2>
+                <p class="section__lead" data-i18n="radio.trackInfo">Wybierz styl i naciśnij play...</p>
             </div>
-            <p id="radio-current-song" class="text-center text-gray-300 mb-4">Wybierz styl i naciśnij play...</p>
-            <div class="flex justify-center space-x-4">
-                <button id="radio-prev-btn" class="px-4 py-2 bg-gray-700 text-gray-200 rounded hover:bg-gray-600 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-amber-500" disabled aria-label="Poprzedni utwór">⏮</button>
-                <button id="radio-play-pause-btn" class="px-4 py-2 bg-amber-500 text-black rounded hover:bg-amber-400 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-amber-500" disabled aria-label="Odtwarzaj lub pauza">
-                    <span id="radio-play-icon">▶</span>
-                    <span id="radio-pause-icon" class="hidden">⏸</span>
-                </button>
-                <button id="radio-next-btn" class="px-4 py-2 bg-gray-700 text-gray-200 rounded hover:bg-gray-600 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-amber-500" disabled aria-label="Następny utwór">⏭</button>
+            <div class="player-grid">
+                <div class="player-surface">
+                    <div class="player-header">
+                        <div class="player-now-playing">
+                            <span class="player-live" data-i18n="radio.liveToggle">Transmisja na żywo</span>
+                            <h3 id="current-track-title" class="player-title" data-i18n="radio.trackInfo">Wybierz styl i naciśnij play...</h3>
+                            <div class="player-meta">
+                                <span id="current-category" class="player-chip">Ambient</span>
+                                <span id="current-duration" class="player-duration">00:00</span>
+                                <span id="current-track-meta" class="player-meta__detail"></span>
+                            </div>
+                        </div>
+                        <div id="visualizer" class="player-visualizer" aria-hidden="true"></div>
+                    </div>
+
+                    <div class="player-progress" id="progress-bar" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <div id="progress-fill" class="player-progress__fill"></div>
+                    </div>
+
+                    <div class="player-controls" role="group" aria-label="Sterowanie odtwarzaczem">
+                        <button id="radio-prev-btn" class="control-btn" type="button" disabled data-i18n-aria-label="radio.controls.previous">
+                            <span aria-hidden="true">⏮</span>
+                        </button>
+                        <button id="radio-play-pause-btn" class="control-btn control-btn--primary" type="button" disabled data-i18n-aria-label="radio.controls.playPause">
+                            <span class="play-icon" aria-hidden="true">▶</span>
+                            <span class="pause-icon hidden" aria-hidden="true">⏸</span>
+                        </button>
+                        <button id="radio-next-btn" class="control-btn" type="button" disabled data-i18n-aria-label="radio.controls.next">
+                            <span aria-hidden="true">⏭</span>
+                        </button>
+                        <button id="shuffle-btn" class="control-btn" type="button" aria-pressed="false" data-i18n-aria-label="radio.controls.shuffle">
+                            <span aria-hidden="true">🔀</span>
+                        </button>
+                        <button id="mute-btn" class="control-btn" type="button" aria-pressed="false" data-i18n-aria-label="radio.controls.mute">
+                            <span class="volume-on" aria-hidden="true">🔊</span>
+                            <span class="volume-off hidden" aria-hidden="true">🔇</span>
+                        </button>
+                    </div>
+
+                    <div class="player-playlists" role="tablist" aria-label="Playlisty Radia Adamowo">
+                        <button class="category-tab active" type="button" role="tab" aria-selected="true" data-category="ambient" data-i18n="radio.playlists.ambient">Ambient</button>
+                        <button class="category-tab" type="button" role="tab" aria-selected="false" data-category="disco" data-i18n="radio.playlists.disco">Disco</button>
+                        <button class="category-tab" type="button" role="tab" aria-selected="false" data-category="hiphop" data-i18n="radio.playlists.hiphop">Hip-Hop</button>
+                        <button class="category-tab" type="button" role="tab" aria-selected="false" data-category="kids" data-i18n="radio.playlists.kids">Kids</button>
+                        <button class="category-tab" type="button" role="tab" aria-selected="false" data-category="barbara" data-i18n="radio.playlists.barbara">Barbara</button>
+                    </div>
+
+                    <div id="audio-fallback" class="player-fallback hidden" role="status" data-i18n="player.fallback.message">W tej chwili nie mamy dostępnych utworów muzycznych.</div>
+                    <div id="playlist" class="playlist-list" aria-live="polite"></div>
+                </div>
+
+                <aside class="player-side">
+                    <div class="player-note">
+                        <h3 class="player-note__title" data-i18n="radio.moodTitle">Jak się dziś czujesz?</h3>
+                        <div class="player-note__grid">
+                            <button class="mood-btn" type="button" data-mood-target="ambient" data-i18n="radio.moods.confused">😕 Zdezorientowany</button>
+                            <button class="mood-btn" type="button" data-mood-target="disco" data-i18n="radio.moods.angry">😠 Zły</button>
+                            <button class="mood-btn" type="button" data-mood-target="hiphop" data-i18n="radio.moods.sad">😢 Smutny</button>
+                            <button class="mood-btn" type="button" data-mood-target="kids" data-i18n="radio.moods.hopeful">😊 Pełen nadziei</button>
+                        </div>
+                        <p class="player-note__hint" data-i18n="radio.moodHint">💡 Muzyka może wpływać na twoje emocje - to też forma manipulacji!</p>
+                    </div>
+                    <div class="player-card">
+                        <h3 class="player-card__title">Statystyki społeczności</h3>
+                        <ul class="player-card__stats">
+                            <li><span data-i18n="intro.stats.users">osób nauczyło się rozpoznawać manipulację</span><strong id="community-users">18 204</strong></li>
+                            <li><span data-i18n="intro.stats.saved">przerwało toksyczne relacje</span><strong id="community-saved">4 112</strong></li>
+                        </ul>
+                    </div>
+                </aside>
             </div>
-            <audio id="radio-player" class="mt-4 mx-auto block" aria-label="Odtwarzacz radia">
+            <audio id="radio-player" class="visually-hidden" aria-label="Odtwarzacz radia">
                 <p>Twoja przeglądarka nie obsługuje elementu audio. Pobierz utwór, aby go odsłuchać.</p>
             </audio>
         </section>
@@ -364,14 +441,35 @@
                         <li>~SzukającyPrawdy: "Dopiero teraz rozumiem, dlaczego 'prezenty' od niego tyle mnie kosztowały."</li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="text-xl special-elite text-amber-500 mb-4">Symulator Rozmowy z Manipulatorem (AI)</h3>
-                    <p class="text-gray-300 mb-4">Przetestuj swoje reakcje w bezpiecznym środowisku.</p>
-                    <div id="chat-container" class="bg-gray-800 p-4 rounded-lg max-h-96 overflow-y-auto"></div>
-                    <form id="chat-form" class="mt-4 flex space-x-2">
-                        <input type="text" id="chat-input" placeholder="Wpisz swoją wiadomość..." class="w-full p-2 bg-gray-700 text-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-amber-500" aria-label="Wiadomość do symulatora AI">
-                        <button type="submit" class="px-4 py-2 bg-amber-500 text-black rounded hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500" aria-label="Wyślij wiadomość">Odpowiedz</button>
-                    </form>
+                <div class="chat-experience">
+                    <div class="chat-header">
+                        <h3 class="chat-title special-elite" data-i18n="chat.title">🤖 Zaawansowany Symulator AI</h3>
+                        <p class="chat-subtitle" data-i18n="chat.intro">Witaj! Jestem AI zaprogramowane do demonstracji technik manipulacji. Każda moja wypowiedź może zawierać ukryte techniki. Bądź czujny!</p>
+                    </div>
+                    <div class="chat-panel">
+                        <aside class="chat-sidebar">
+                            <div class="chat-stats">
+                                <div class="chat-stat"><span data-i18n="chat.stats.detected">Technik wykrytych:</span><strong id="chat-detected-count">0</strong></div>
+                                <div class="chat-stat"><span data-i18n="chat.stats.deflected">Skutecznie odparto:</span><strong id="chat-deflected-count">0</strong></div>
+                                <div class="chat-threat" aria-live="polite"><span data-i18n="chat.stats.threat">Poziom zagrożenia:</span><strong id="chat-threat-level" data-level="low" data-i18n="chat.threatLevels.low">Niski</strong></div>
+                            </div>
+                            <div class="chat-suggestions">
+                                <h4 class="chat-suggestions__title">Szybkie odpowiedzi</h4>
+                                <button class="chat-suggestion" type="button" data-suggestion="healthy" data-i18n="chat.suggestions.healthy">💚 Zdrowa odpowiedź</button>
+                                <button class="chat-suggestion" type="button" data-suggestion="assertive" data-i18n="chat.suggestions.assertive">💪 Asertywna odpowiedź</button>
+                                <button class="chat-suggestion" type="button" data-suggestion="vulnerable" data-i18n="chat.suggestions.vulnerable">😔 Podatna odpowiedź</button>
+                            </div>
+                        </aside>
+                        <div class="chat-content">
+                            <div id="chat-container" class="chat-window" role="log" aria-live="polite"></div>
+                            <form id="chat-form" class="chat-form">
+                                <label class="visually-hidden" for="chat-input">Wiadomość do symulatora AI</label>
+                                <input type="text" id="chat-input" class="chat-input" placeholder="Napisz swoją odpowiedź..." data-i18n-placeholder="chat.placeholder" aria-label="Wiadomość do symulatora AI">
+                                <button type="submit" class="button button--primary" data-i18n="chat.sendButton">Wyślij</button>
+                            </form>
+                            <p class="chat-hint" data-i18n="chat.help">💡 Wskazówka: Kliknij 🔍 aby zobaczyć analizę technik manipulacji w czasie rzeczywistym.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -384,7 +482,7 @@
         </section>
     </main>
 
-    <footer class="bg-gray-900 py-8 text-center border-t border-gray-800">
+    <footer class="site-footer">
         <p>© <span id="current-year">2025</span> Radio Adamowo. Wszelkie prawa zastrzeżone... i poddane publicznej analizie.</p>
         <p class="mt-2">Celem audycji jest edukacja na temat zjawisk psychologicznych i społecznych. Słuchaj, analizuj, chroń siebie.</p>
         <div class="mt-4">
@@ -397,8 +495,8 @@
         <p class="mt-4 text-sm text-gray-400">Wszelka zbieżność imion i miejsc jest całkowicie przypadkowa. Audycja stanowi formę artystycznej i satyrycznej analizy zjawisk społecznych.</p>
     </footer>
 
-    <button id="to-top-button" class="fixed bottom-4 right-4 bg-amber-500 text-black p-3 rounded-full hidden hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500" aria-label="Wróć na górę">↑</button>
+    <button id="to-top-button" class="to-top-button hidden" aria-label="Wróć na górę">↑</button>
     <canvas id="visualizer-canvas" aria-hidden="true"></canvas>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
