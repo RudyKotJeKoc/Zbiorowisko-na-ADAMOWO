@@ -4,12 +4,44 @@
 
 export class AudioPlayer {
     constructor(config = {}) {
-        this.config = {
-            visualizerFFTSize: config.visualizerFFTSize || 256,
-            crossfadeDuration: config.crossfadeDuration || 300,
-            enableVisualization: config.enableVisualization !== false,
-            ...config
+        const defaultSelectors = {
+            audioElement: '#radio-player',
+            playPauseBtn: '#radio-play-pause-btn',
+            nextBtn: '#radio-next-btn',
+            prevBtn: '#radio-prev-btn',
+            shuffleBtn: '#shuffle-btn',
+            muteBtn: '#mute-btn',
+            progressBar: '#progress-bar',
+            progressFill: '#progress-fill',
+            trackTitle: '#current-track-title',
+            trackMeta: '#current-track-meta',
+            categoryLabel: '#current-category',
+            durationLabel: '#current-duration',
+            visualizer: '#visualizer',
+            playlist: '#playlist',
+            categoryTabs: '.category-tab',
+            autoplayOverlay: '#autoplay-overlay',
+            fallbackMessage: '#audio-fallback'
         };
+
+        const {
+            selectors = {},
+            enableVisualization,
+            visualizerFFTSize,
+            crossfadeDuration,
+            playlistUrl,
+            ...restConfig
+        } = config;
+
+        this.config = {
+            visualizerFFTSize: visualizerFFTSize || 256,
+            crossfadeDuration: crossfadeDuration || 300,
+            enableVisualization: enableVisualization !== false,
+            playlistUrl: playlistUrl || 'playlist.json',
+            ...restConfig
+        };
+
+        this.config.selectors = { ...defaultSelectors, ...selectors };
         
         // Audio state
         this.audioElement = null;
@@ -79,41 +111,25 @@ export class AudioPlayer {
     }
     
     findElements() {
-        const elementMap = {
-            audioElement: '#radio-player',
-            playPauseBtn: '#radio-play-pause-btn',
-            nextBtn: '#radio-next-btn',
-            prevBtn: '#radio-prev-btn',
-            shuffleBtn: '#shuffle-btn',
-            muteBtn: '#mute-btn',
-            progressBar: '#progress-bar',
-            progressFill: '#progress-fill',
-            trackTitle: '#current-track-title',
-            trackMeta: '#current-track-meta',
-            categoryLabel: '#current-category',
-            durationLabel: '#current-duration',
-            visualizer: '#visualizer',
-            playlist: '#playlist',
-            categoryTabs: '.category-tab',
-            autoplayOverlay: '#autoplay-overlay',
-            fallbackMessage: '#audio-fallback'
-        };
-        
-        for (const [key, selector] of Object.entries(elementMap)) {
+        const selectors = this.config.selectors;
+
+        for (const [key, selector] of Object.entries(selectors)) {
+            if (key === 'categoryTabs') {
+                this.elements.categoryTabs = document.querySelectorAll(selector);
+                continue;
+            }
+
             const element = document.querySelector(selector);
             if (!element && key === 'audioElement') {
                 throw new Error(`Required element not found: ${selector}`);
             }
             this.elements[key] = element;
         }
-        
-        // Get category tabs as NodeList
-        this.elements.categoryTabs = document.querySelectorAll('.category-tab');
     }
     
     async loadPlaylists() {
         try {
-            const response = await fetch('data/playlist.json');
+            const response = await fetch(this.config.playlistUrl);
             if (!response.ok) {
                 throw new Error(`Failed to load playlist: ${response.status}`);
             }
@@ -192,14 +208,16 @@ export class AudioPlayer {
         }
         
         // Category tabs
-        this.elements.categoryTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const category = tab.getAttribute('data-category');
-                if (category) {
-                    this.switchPlaylist(category);
-                }
+        if (this.elements.categoryTabs && this.elements.categoryTabs.length > 0) {
+            this.elements.categoryTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const category = tab.getAttribute('data-category');
+                    if (category) {
+                        this.switchPlaylist(category);
+                    }
+                });
             });
-        });
+        }
         
         // Autoplay overlay
         if (this.elements.autoplayOverlay) {
@@ -452,10 +470,14 @@ export class AudioPlayer {
     }
     
     updateCategoryTabs() {
+        if (!this.elements.categoryTabs || this.elements.categoryTabs.length === 0) {
+            return;
+        }
+
         this.elements.categoryTabs.forEach(tab => {
             const category = tab.getAttribute('data-category');
             const isActive = category === this.currentPlaylist;
-            
+
             tab.classList.toggle('active', isActive);
             tab.setAttribute('aria-selected', isActive);
         });
