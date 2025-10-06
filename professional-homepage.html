@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="pl" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Adamowo - Profesjonalna Platforma Edukacyjna o Manipulacji Psychologicznej</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Radio Adamowo to innowacyjna platforma łącząca muzykę z edukacją o manipulacji psychologicznej, narcyzmie i toksycznych relacjach. Ucz się rozpoznawać czerwone flagi z pomocą AI i ekspertów.">
+    <meta name="keywords" content="Radio Adamowo, manipulacja psychologiczna, narcyzm, toksyczne relacje, edukacja, AI, czerwone flagi, przewodnik">
+    <meta name="author" content="Radio Adamowo Team">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Radio Adamowo - Edukacja o Manipulacji Psychologicznej">
+    <meta property="og:description" content="Innowacyjna platforma łącząca muzykę z edukacją o toksycznych relacjach i manipulacji. Ucz się rozpoznawać czerwone flagi.">
+    <meta property="og:url" content="https://radioadamowo.com">
+    <meta property="og:site_name" content="Radio Adamowo">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Radio Adamowo - Edukacja o Manipulacji Psychologicznej">
+    <meta name="twitter:description" content="Innowacyjna platforma łącząca muzykę z edukacją o toksycznych relacjach i manipulacji.">
+    
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#ff8c42">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Radio Adamowo">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS Framework -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-primary': '#ff8c42',
+                        'brand-secondary': '#4ecdc4',
+                        'brand-accent': '#ffd700',
+                        'brand-coral': '#ff6b6b'
+                    },
+                    fontFamily: {
+                        'primary': ['Poppins', 'sans-serif'],
+                        'secondary': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --gradient-primary: linear-gradient(135deg, #ff8c42 0%, #ffb380 100%);
+            --gradient-secondary: linear-gradient(135deg, #4ecdc4 0%, #7dd3db 100%);
+            --shadow-soft: 0 4px 20px rgba(255, 140, 66, 0.1);
+            --shadow-medium: 0 8px 30px rgba(255, 140, 66, 0.15);
+            --border-radius: 12px;
+        }
+        
+        .gradient-primary { background: var(--gradient-primary); }
+        .gradient-secondary { background: var(--gradient-secondary); }
+        .shadow-soft { box-shadow: var(--shadow-soft); }
+        .shadow-medium { box-shadow: var(--shadow-medium); }
+        
+        .hero-pattern {
+            background-image: radial-gradient(circle at 25% 25%, rgba(255, 140, 66, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 75% 75%, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .feature-icon {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-title { font-size: 2.5rem; line-height: 1.1; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-orange-50 to-teal-50 font-secondary">
+
+    <!-- Skip Links for Accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand-primary text-white px-4 py-2 rounded-md z-50">
+        Przejdź do głównej treści
+    </a>
+
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-soft sticky top-0 z-40" role="navigation" aria-label="Główna nawigacja">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-primary font-bold text-brand-primary">
+                            Radio Adamowo
+                        </h1>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#features" class="text-gray-700 hover:text-brand-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            Funkcje
+                        </a>
+                        <a href="#about" class="text-gray-700 hover:text-brand-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            O nas
+                        </a>
+                        <a href="#team" class="text-gray-700 hover:text-brand-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            Zespół
+                        </a>
+                        <a href="#contact" class="text-gray-700 hover:text-brand-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            Kontakt
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block">
+                    <button class="btn-primary text-white px-6 py-2 rounded-lg font-medium" onclick="launchApp()">
+                        Uruchom Aplikację
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" id="mobile-menu-button" class="text-gray-700 hover:text-brand-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-primary" aria-expanded="false" aria-controls="mobile-menu">
+                        <span class="sr-only">Otwórz menu główne</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+                <a href="#features" class="text-gray-700 hover:text-brand-primary block px-3 py-2 rounded-md text-base font-medium">Funkcje</a>
+                <a href="#about" class="text-gray-700 hover:text-brand-primary block px-3 py-2 rounded-md text-base font-medium">O nas</a>
+                <a href="#team" class="text-gray-700 hover:text-brand-primary block px-3 py-2 rounded-md text-base font-medium">Zespół</a>
+                <a href="#contact" class="text-gray-700 hover:text-brand-primary block px-3 py-2 rounded-md text-base font-medium">Kontakt</a>
+                <button class="btn-primary text-white px-6 py-2 rounded-lg font-medium w-full mt-4" onclick="launchApp()">
+                    Uruchom Aplikację
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-pattern relative py-20 lg:py-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                    <div class="animate-fade-in">
+                        <h2 class="hero-title text-4xl lg:text-6xl font-primary font-bold text-gray-900 mb-6">
+                            Edukacja o 
+                            <span class="bg-gradient-to-r from-brand-primary to-brand-coral bg-clip-text text-transparent">
+                                Manipulacji
+                            </span> 
+                            przez Muzykę
+                        </h2>
+                        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                            Innowacyjna platforma łącząca streaming muzyki z zaawansowaną edukacją o manipulacji psychologicznej, narcyzmie i toksycznych relacjach. Ucz się rozpoznawać czerwone flagi w bezpiecznym środowisku.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button class="btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg" onclick="launchApp()">
+                                Rozpocznij Naukę
+                            </button>
+                            <button class="border-2 border-brand-primary text-brand-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-brand-primary hover:text-white transition-all" onclick="playDemo()">
+                                Zobacz Demo
+                            </button>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="mt-12 grid grid-cols-3 gap-8">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-brand-primary font-primary">546</div>
+                                <div class="text-sm text-gray-600 mt-1">Utworów</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-brand-secondary font-primary">16</div>
+                                <div class="text-sm text-gray-600 mt-1">Podcastów</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-brand-coral font-primary">8</div>
+                                <div class="text-sm text-gray-600 mt-1">Narzędzi AI</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 lg:mt-0 relative">
+                        <div class="animate-float">
+                            <div class="bg-white rounded-3xl shadow-medium p-8 relative">
+                                <!-- Mock Radio Interface -->
+                                <div class="text-center mb-6">
+                                    <div class="w-20 h-20 mx-auto gradient-primary rounded-full flex items-center justify-center mb-4">
+                                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="font-semibold text-lg text-gray-900">Radio Adamowo Live</h3>
+                                    <p class="text-sm text-gray-600">Analiza manipulacji w czasie rzeczywistym</p>
+                                </div>
+                                
+                                <!-- Fake Audio Visualizer -->
+                                <div class="flex items-end justify-center space-x-1 h-16 mb-6">
+                                    <div class="bg-brand-primary w-2 h-8 rounded-full animate-pulse" style="animation-delay: 0s;"></div>
+                                    <div class="bg-brand-secondary w-2 h-12 rounded-full animate-pulse" style="animation-delay: 0.1s;"></div>
+                                    <div class="bg-brand-coral w-2 h-6 rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+                                    <div class="bg-brand-primary w-2 h-14 rounded-full animate-pulse" style="animation-delay: 0.3s;"></div>
+                                    <div class="bg-brand-secondary w-2 h-10 rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+                                    <div class="bg-brand-coral w-2 h-16 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+                                    <div class="bg-brand-primary w-2 h-4 rounded-full animate-pulse" style="animation-delay: 0.6s;"></div>
+                                </div>
+                                
+                                <!-- Manipulation Detection Bar -->
+                                <div class="bg-gray-100 rounded-full p-1 mb-4">
+                                    <div class="bg-gradient-to-r from-green-400 to-yellow-500 h-2 rounded-full" style="width: 35%;"></div>
+                                </div>
+                                <p class="text-xs text-center text-gray-600">Poziom manipulacji: Niski</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating elements -->
+                        <div class="absolute -top-8 -left-8 w-16 h-16 bg-brand-accent rounded-full opacity-20 animate-bounce" style="animation-delay: 1s;"></div>
+                        <div class="absolute -bottom-8 -right-8 w-12 h-12 bg-brand-coral rounded-full opacity-20 animate-bounce" style="animation-delay: 2s;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-primary font-bold text-gray-900 mb-4">
+                        Innowacyjne Narzędzia Edukacyjne
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Wykorzystujemy najnowsze technologie AI i psychologii do stworzenia kompletnego ekosystemu edukacyjnego
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="card-hover bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl">
+                        <div class="feature-icon text-4xl mb-4">🎵</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Music Streaming</h3>
+                        <p class="text-gray-600 mb-4">546 utworów w różnych kategoriach dostosowanych do nastroju i potrzeb edukacyjnych</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Ambient dla relaksacji</li>
+                            <li>• Hip-hop dla koncentracji</li>
+                            <li>• Disco dla pozytywnej energii</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Feature 2 -->
+                    <div class="card-hover bg-gradient-to-br from-teal-50 to-teal-100 p-8 rounded-2xl">
+                        <div class="feature-icon text-4xl mb-4">🤖</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">AI Symulator</h3>
+                        <p class="text-gray-600 mb-4">Trenuj rozpoznawanie manipulacji w bezpiecznym środowisku z AI</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Symulacje toksycznych rozmów</li>
+                            <li>• Analiza w czasie rzeczywistym</li>
+                            <li>• Spersonalizowane scenariusze</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Feature 3 -->
+                    <div class="card-hover bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-2xl">
+                        <div class="feature-icon text-4xl mb-4">📊</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Detekcja Manipulacji</h3>
+                        <p class="text-gray-600 mb-4">Zaawansowane algorytmy analizują wzorce komunikacji</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Real-time detection</li>
+                            <li>• Pressure bar visualization</li>
+                            <li>• Pattern recognition</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Feature 4 -->
+                    <div class="card-hover bg-gradient-to-br from-pink-50 to-pink-100 p-8 rounded-2xl">
+                        <div class="feature-icon text-4xl mb-4">📚</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Edukacyjne Podcasty</h3>
+                        <p class="text-gray-600 mb-4">16 profesjonalnych audycji analitycznych o toksycznych relacjach</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Eksperckie analizy przypadków</li>
+                            <li>• Praktyczne porady</li>
+                            <li>• Wsparcie psychologiczne</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Feature 5 -->
+                    <div class="card-hover bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl">
+                        <div class="feature-icon text-4xl mb-4">📅</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Dziennik Czerwonych Flag</h3>
+                        <p class="text-gray-600 mb-4">Interaktywny kalendarz do śledzenia i analizy toksycznych zachowań</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Anonimowe notatki</li>
+                            <li>• Wspólnota wsparcia</li>
+                            <li>• Analiza wzorców</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Feature 6 -->
+                    <div class="card-hover bg-gradient-to-br from-indigo-50 to-indigo-100 p-8 rounded-2xl">
+                        <div class="feature-icon text-4xl mb-4">📱</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Progressive Web App</h3>
+                        <p class="text-gray-600 mb-4">Instalowalna aplikacja działająca offline z pełną funkcjonalnością</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Działanie offline</li>
+                            <li>• Push notifications</li>
+                            <li>• Native app experience</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl font-primary font-bold text-gray-900 mb-6">
+                            O Projekcie Radio Adamowo
+                        </h2>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            Radio Adamowo powstało z potrzeby stworzenia bezpiecznego miejsca edukacji o manipulacji psychologicznej i toksycznych relacjach. Łączymy muzykę z nauką, tworząc unikalne doświadczenie edukacyjne.
+                        </p>
+                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                            Nasz projekt wykorzystuje studium przypadku rodzinnej historii jako narzędzie edukacyjne, pomagając innym rozpoznać wzorce manipulacji i nauczyć się ich unikać.
+                        </p>
+                        
+                        <!-- Key Stats -->
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center p-6 bg-white rounded-xl shadow-soft">
+                                <div class="text-3xl font-bold text-brand-primary font-primary mb-2">7.5/10</div>
+                                <div class="text-sm text-gray-600">Ocena Produktu</div>
+                            </div>
+                            <div class="text-center p-6 bg-white rounded-xl shadow-soft">
+                                <div class="text-3xl font-bold text-brand-secondary font-primary mb-2">50.0</div>
+                                <div class="text-sm text-gray-600">Jakość Dokumentacji</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 lg:mt-0">
+                        <div class="bg-white rounded-2xl shadow-medium p-8">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-6">Nasza Misja</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-6 h-6 gradient-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-600">Edukacja o wzorcach manipulacji psychologicznej</p>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-6 h-6 gradient-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-600">Tworzenie bezpiecznej przestrzeni dla ofiar</p>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-6 h-6 gradient-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-600">Wykorzystanie technologii AI w celach edukacyjnych</p>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-6 h-6 gradient-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-600">Budowanie wspólnoty świadomych ludzi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-primary font-bold text-gray-900 mb-4">
+                        Zespół Ekspertów
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Multidyscyplinarny zespół specjalistów z obszaru psychologii, technologii i edukacji
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Team Member 1 -->
+                    <div class="text-center card-hover bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl">
+                        <div class="w-24 h-24 mx-auto mb-4 gradient-primary rounded-full flex items-center justify-center">
+                            <span class="text-2xl font-bold text-white">EM</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Emma</h3>
+                        <p class="text-brand-primary font-medium mb-3">Product Manager</p>
+                        <p class="text-sm text-gray-600">Odpowiedzialna za strategię produktu i analizę user experience</p>
+                    </div>
+                    
+                    <!-- Team Member 2 -->
+                    <div class="text-center card-hover bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-2xl">
+                        <div class="w-24 h-24 mx-auto mb-4 gradient-secondary rounded-full flex items-center justify-center">
+                            <span class="text-2xl font-bold text-white">AL</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Alex</h3>
+                        <p class="text-brand-secondary font-medium mb-3">Lead Engineer</p>
+                        <p class="text-sm text-gray-600">Główny inżynier odpowiedzialny za architekturę techniczną</p>
+                    </div>
+                    
+                    <!-- Team Member 3 -->
+                    <div class="text-center card-hover bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-2xl">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
+                            <span class="text-2xl font-bold text-white">BO</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Bob</h3>
+                        <p class="text-yellow-600 font-medium mb-3">System Architect</p>
+                        <p class="text-sm text-gray-600">Architekt systemu i specjalista od infrastruktury</p>
+                    </div>
+                    
+                    <!-- Team Member 4 -->
+                    <div class="text-center card-hover bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-2xl">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-r from-pink-400 to-pink-600 rounded-full flex items-center justify-center">
+                            <span class="text-2xl font-bold text-white">DA</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Data Analyst</h3>
+                        <p class="text-pink-600 font-medium mb-3">Analityk Danych</p>
+                        <p class="text-sm text-gray-600">Specjalista od analizy behawioralnej i wzorców</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 hero-pattern">
+            <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-primary font-bold text-gray-900 mb-6">
+                    Gotowy na Zmianę?
+                </h2>
+                <p class="text-xl text-gray-600 mb-8">
+                    Dołącz do tysięcy osób, które już nauczyły się rozpoznawać manipulację i budować zdrowe relacje
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg" onclick="launchApp()">
+                        Rozpocznij Edukację
+                    </button>
+                    <a href="#contact" class="border-2 border-gray-400 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg hover:border-gray-600 hover:text-gray-900 transition-all">
+                        Skontaktuj się z nami
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-12">
+                    <div>
+                        <h2 class="text-4xl font-primary font-bold mb-6">Skontaktuj się z nami</h2>
+                        <p class="text-xl text-gray-300 mb-8">
+                            Masz pytania o manipulację psychologiczną? Potrzebujesz wsparcia? Skontaktuj się z naszym zespołem ekspertów.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 gradient-primary rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Email</p>
+                                    <p class="text-gray-400">kontakt@radioadamowo.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 gradient-secondary rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Lokalizacja</p>
+                                    <p class="text-gray-400">Polska</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Dostępność</p>
+                                    <p class="text-gray-400">24/7 Online Support</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 lg:mt-0">
+                        <form class="space-y-6" onsubmit="return submitContactForm(event)">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Imię</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent text-white placeholder-gray-400" placeholder="Twoje imię">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent text-white placeholder-gray-400" placeholder="twoj@email.com">
+                            </div>
+                            
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Temat</label>
+                                <select id="subject" name="subject" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent text-white">
+                                    <option value="">Wybierz temat</option>
+                                    <option value="support">Wsparcie techniczne</option>
+                                    <option value="education">Pytania o edukację</option>
+                                    <option value="partnership">Współpraca</option>
+                                    <option value="other">Inne</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Wiadomość</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent text-white placeholder-gray-400 resize-none" placeholder="Twoja wiadomość..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                                Wyślij wiadomość
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-primary font-bold text-brand-primary mb-4">Radio Adamowo</h3>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Edukacyjna platforma o manipulacji psychologicznej łącząca muzykę z nauką. Pomagamy rozpoznawać toksyczne wzorce i budować zdrowe relacje.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-brand-primary transition-colors">
+                            <span class="sr-only">Facebook</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-brand-primary transition-colors">
+                            <span class="sr-only">Twitter</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-brand-primary transition-colors">
+                            <span class="sr-only">YouTube</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Funkcje</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-brand-primary transition-colors">Music Streaming</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition-colors">AI Symulator</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition-colors">Detekcja Manipulacji</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition-colors">Edukacyjne Podcasty</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition-colors">PWA</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Wsparcie</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-brand-primary transition-colors">Centrum Pomocy</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition-colors">Kontakt</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition-colors">Polityka Prywatności</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition-colors">Regulamin</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 Radio Adamowo. Wszystkie prawa zastrzeżone. Projekt edukacyjny.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const isHidden = mobileMenu.classList.contains('hidden');
+            
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                this.setAttribute('aria-expanded', 'true');
+            } else {
+                mobileMenu.classList.add('hidden');
+                this.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Functions for buttons
+        function launchApp() {
+            // In real implementation, this would redirect to the actual app
+            // For demo purposes, redirect to existing Radio Adamowo app
+            window.location.href = 'index.html';
+        }
+
+        function playDemo() {
+            // Show a demo modal or redirect to demo section
+            alert('Demo funkcjonalności będzie dostępne wkrótce. Kliknij "Uruchom Aplikację" aby przetestować pełną wersję.');
+        }
+
+        function submitContactForm(event) {
+            event.preventDefault();
+            // In real implementation, this would send the form data
+            alert('Dziękujemy za wiadomość! Skontaktujemy się z Tobą wkrótce.');
+            event.target.reset();
+            return false;
+        }
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // PWA Installation prompt
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Show install button or banner
+        });
+
+        // Accessibility: Focus management
+        document.addEventListener('keydown', (e) => {
+            // Tab navigation improvements
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-navigation');
+        });
+    </script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Radio Adamowo",
+        "description": "Edukacyjna platforma o manipulacji psychologicznej łącząca muzykę z nauką",
+        "url": "https://radioadamowo.com",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "PLN"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "Radio Adamowo Team"
+        }
+    }
+    </script>
+</body>
+</html>
